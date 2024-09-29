@@ -1,0 +1,36 @@
+Reverse a linked list
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev=NULL;
+        ListNode* cur=head;
+        ListNode* next=NULL;
+
+        while(cur)
+        {
+            next=cur->next;
+            cur->next=prev;
+            prev=cur;
+            cur=next;
+        }
+        return prev;
+    }
+};
+
+//using stack
+stack<int> s;
+        ListNode* temp = head;
+
+        // pushing the elements in the stack.
+        while(temp!=NULL){
+            s.push(temp->val);
+            temp = temp->next;
+        }
+
+        temp = head;
+        while(temp!=NULL){
+            temp->val = s.top();
+            s.pop();
+            temp = temp->next;
+        }
+        return head;
