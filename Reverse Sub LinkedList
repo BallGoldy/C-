@@ -20,3 +20,40 @@ public:
         return dummy->next;
     }
 };
+
+//using Queue
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if(left == right) return head;
+        int count = 0;
+        stack<ListNode*> nodeStack;
+        ListNode *newHead = head;
+        ListNode *newList = nullptr;
+        ListNode *tail = nullptr;
+        while(head != nullptr) {
+            count++;
+            if(count == left - 1)
+                newList = head;
+            if(count >= left && count <= right) {
+                nodeStack.push(head);
+            }
+            if(count == right + 1) {
+                tail = head;
+            }
+            head = head->next;
+        }
+        if(newList == nullptr) {
+            newList = nodeStack.top();
+            nodeStack.pop();
+            newHead = newList;
+        }
+        while(!nodeStack.empty()) {
+            newList->next = nodeStack.top();
+            nodeStack.pop();
+            newList = newList->next;
+        }
+        newList->next = tail;
+        return newHead;
+    }
+};
