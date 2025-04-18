@@ -1,0 +1,7 @@
+while(cur!=null)
+{
+prev=cur.back;
+cur.back=cur.next;
+cur.next=prev;
+cur=cur.back;
+}
