@@ -1,0 +1,116 @@
+class Pizza {
+    int size,toppings,flour;
+    boolean express;
+    static int totalOrders;
+
+    Static {
+        totalOrders=0;
+        System.out.println("Ready");
+    }
+
+    public Pizza(int size, int toppings, int flour) {
+        this.size=size;
+        this.toppings=toppings;
+        this.flour=flour;
+    }
+
+    public Pizza(int size, int flour) {
+        this.size=size;
+        this.flour=flour;
+    }
+
+    public Pizza() {
+        this.size=1;
+        this.toppings=1;
+        this.flour=1;
+    }
+
+    public Pizza(int flour) {
+        this.flour=flour;
+        this.size=1;
+        this.toppings=1;
+    }
+
+    void order() {
+        this.express=false;
+        System.out.println("Pizza has been ordered");
+        totalOrders
+    }
+
+    void order(String address) {
+        this.express=false;
+        System.out.println("Pizza has been ordered to this address:" + address);
+        totalOrders++;
+    }
+
+    void order(String address,boolean express) {
+        this.express=express;
+        if(express) {
+            System.out.println("Pizza has been ordered to this address for fast delivery: " + address);
+        }
+        else System.out.println("Pizza has been ordered to this address: " + address);
+        totalOrders++;
+    }
+
+    void Info() {
+        System.out.println("Pizza Info:");
+        System.out.println("Size: " + size);
+        System.out.println("Toppings: " + toppings);
+        System.out.println("Flour: " + flour);
+        System.out.println("Express delivry:" + (expressdelivery ? "yes" : "no"));
+    }
+
+    void showOrdersTotal() {
+        System.out.println(totalOrders);
+    }
+}
+
+class Type extends Pizza{
+    String type;
+
+    Type(String type,int size, int toppings, int flour) {
+        super(size,toppings,flour);
+        this.type=type;
+    }
+
+    void displayType() {
+        System.out.println("Type:" + type);
+    }
+
+    @Override
+    void info() {
+        super.info();
+        System.out.println("Type:" + type); //or use this.type;
+    }
+}
+
+class PizzaUtils {
+    public static int deliveryTime(boolean express) {
+        if(express) return 30;
+        else return 60;
+    }
+
+    public static double cost(int size, int toppings) {
+        double basePrice = 5;
+        double sizePrice = size*2;
+        double sizePrice = toppings*1.5;
+
+        return basePrice+sizePrice+sizePrice;
+    }
+}
+
+class yo {
+    Pizza.showOrdersTotal();
+    Pizza toy = new Pizza(1,3,3);
+    toy.order("Hello",true);
+    toy.info();
+    Pizza.showOrdersTotal();
+
+    int deliveryTime = PizzaUtils.deliveryTime(p1.expressDelivery);
+    int cost = PizzaUtils.cost(p1.size, p1.toppings);
+
+    Type vegPizza = new Type("Veg",1,2,3);
+    vegPizza.info(); //overridden info()
+    vegPizza.displayType(); //new method in type()
+    //System.out.println("Type": vegPizza.type);
+}
