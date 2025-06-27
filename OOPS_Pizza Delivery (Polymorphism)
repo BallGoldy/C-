@@ -1,0 +1,29 @@
+class Pizza {
+    void bake() {
+        System.out.println("Baking generic pizza");
+    }
+
+    static void staticBake() {
+        System.out.println("Static: Pizza baking");
+    }
+}
+
+class VegPizza extends Pizza {
+    @Override
+    void bake() {
+        System.out.println("Baking veg pizza");
+    }
+
+    static void staticBake() {
+        System.out.println("Static: VegPizza baking");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pizza p = new VegPizza(); // parent reference, child object
+
+        p.bake();           // 👈 Late binding (calls VegPizza.bake at runtime)
+        p.staticBake();     // 👈 Early binding (calls Pizza.staticBake at compile time)
+    }
+}
